@@ -485,6 +485,67 @@
     </div>
   </footer>
 
+  <!-- Checkout Modal -->
+  <div class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <div class="modal__overlay" id="modalOverlay"></div>
+    <div class="modal__dialog">
+      <div class="modal__head">
+        <h3 id="checkoutTitle">🛒 إتمام الشراء</h3>
+        <button class="modal__close" id="modalClose" aria-label="إغلاق">✕</button>
+      </div>
+
+      <div id="checkoutBody">
+        <div class="checkout__empty" id="checkoutEmpty" hidden>
+          السلة فاضية لسه 🛒<br />ضيف كورس الأول وبعدين ارجع كمّل الشراء.
+        </div>
+
+        <div id="checkoutContent" hidden>
+          <div class="checkout__items" id="checkoutItems"></div>
+
+          <div class="checkout__total">
+            <span>الإجمالي</span>
+            <span id="checkoutTotal">0 ج.م</span>
+          </div>
+
+          <form class="checkout__form" id="checkoutForm" novalidate>
+            <div class="form-field">
+              <label for="buyerName">الاسم بالكامل</label>
+              <input type="text" id="buyerName" placeholder="اكتب اسمك" autocomplete="name" />
+            </div>
+            <div class="form-field">
+              <label for="buyerPhone">رقم الموبايل</label>
+              <input type="tel" id="buyerPhone" placeholder="01xxxxxxxxx" autocomplete="tel" dir="ltr" />
+            </div>
+            <div class="form-field">
+              <label for="buyerEmail">البريد الإلكتروني</label>
+              <input type="email" id="buyerEmail" placeholder="name@example.com" autocomplete="email" dir="ltr" />
+            </div>
+            <span class="form-error" id="formError">من فضلك املأ البيانات صح عشان نكمل الطلب.</span>
+
+            <div class="form-field">
+              <label>طريقة الدفع</label>
+              <div class="pay-methods">
+                <label class="pay-method"><input type="radio" name="payMethod" value="vodafone-cash" checked /> 📱 محفظة إلكترونية (فودافون كاش)</label>
+                <label class="pay-method"><input type="radio" name="payMethod" value="instapay" /> 🏦 انستاباي</label>
+                <label class="pay-method"><input type="radio" name="payMethod" value="paypal" /> 💳 PayPal</label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--block checkout__submit">تأكيد الطلب ✅</button>
+          </form>
+        </div>
+
+        <div class="checkout__success" id="checkoutSuccess" hidden>
+          <div class="success__icon">🎉</div>
+          <h4>تم استلام طلبك بنجاح!</h4>
+          <p>هيوصلك إيميل بخطوات تفعيل حسابك والدخول للكورسات.</p>
+          <span class="order-number" id="orderNumber"></span>
+          <button class="btn btn--primary btn--block" id="successClose">تمام، كمّل تصفح</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast -->
   <div class="toast" id="toast">✅ اتضاف الكورس للسلة</div>
 
