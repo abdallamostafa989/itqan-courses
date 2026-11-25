@@ -74,20 +74,26 @@
   });
 
   // --- Cart + checkout ---
-  const cartCount = document.getElementById("cartCount");
-  const toast = document.getElementById("toast");
-  const modal = document.getElementById("checkoutModal");
-  const modalOverlay = document.getElementById("modalOverlay");
-  const modalClose = document.getElementById("modalClose");
-  const checkoutEmpty = document.getElementById("checkoutEmpty");
-  const checkoutContent = document.getElementById("checkoutContent");
-  const checkoutSuccess = document.getElementById("checkoutSuccess");
-  const checkoutItems = document.getElementById("checkoutItems");
-  const checkoutTotal = document.getElementById("checkoutTotal");
-  const checkoutForm = document.getElementById("checkoutForm");
-  const formError = document.getElementById("formError");
-  const orderNumber = document.getElementById("orderNumber");
-  const successClose = document.getElementById("successClose");
+  // Guard: if any checkout element is missing (e.g. stale cached HTML with new JS),
+  // skip the cart module instead of throwing and killing the rest of the page.
+  const CART_IDS = ["cartCount","toast","checkoutModal","modalOverlay","modalClose","checkoutEmpty","checkoutContent","checkoutSuccess","checkoutItems","checkoutTotal","checkoutForm","formError","orderNumber","successClose","cartBtn"];
+  const cartEls = Object.fromEntries(CART_IDS.map((id) => [id, document.getElementById(id)]));
+  const cartReady = Object.values(cartEls).every(Boolean);
+  if (cartReady) {
+  const cartCount = cartEls.cartCount;
+  const toast = cartEls.toast;
+  const modal = cartEls.checkoutModal;
+  const modalOverlay = cartEls.modalOverlay;
+  const modalClose = cartEls.modalClose;
+  const checkoutEmpty = cartEls.checkoutEmpty;
+  const checkoutContent = cartEls.checkoutContent;
+  const checkoutSuccess = cartEls.checkoutSuccess;
+  const checkoutItems = cartEls.checkoutItems;
+  const checkoutTotal = cartEls.checkoutTotal;
+  const checkoutForm = cartEls.checkoutForm;
+  const formError = cartEls.formError;
+  const orderNumber = cartEls.orderNumber;
+  const successClose = cartEls.successClose;
 
   const cart = []; // { title, price, emoji }
   let toastTimer;
@@ -153,7 +159,7 @@
     })
   );
 
-  document.getElementById("cartBtn").addEventListener("click", openModal);
+  cartEls.cartBtn.addEventListener("click", openModal);
   modalClose.addEventListener("click", closeModal);
   modalOverlay.addEventListener("click", closeModal);
   successClose.addEventListener("click", closeModal);
@@ -190,6 +196,7 @@
     bumpCount();
     checkoutForm.reset();
   });
+  } // end cartReady guard
 
   // --- Scroll reveal ---
   const revealObserver = new IntersectionObserver(
