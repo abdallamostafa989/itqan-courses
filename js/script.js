@@ -73,31 +73,122 @@
     });
   });
 
-  // --- Cart counter + toast ---
+  // --- Cart + checkout ---
   const cartCount = document.getElementById("cartCount");
   const toast = document.getElementById("toast");
-  let count = 0;
+  const modal = document.getElementById("checkoutModal");
+  const modalOverlay = document.getElementById("modalOverlay");
+  const modalClose = document.getElementById("modalClose");
+  const checkoutEmpty = document.getElementById("checkoutEmpty");
+  const checkoutContent = document.getElementById("checkoutContent");
+  const checkoutSuccess = document.getElementById("checkoutSuccess");
+  const checkoutItems = document.getElementById("checkoutItems");
+  const checkoutTotal = document.getElementById("checkoutTotal");
+  const checkoutForm = document.getElementById("checkoutForm");
+  const formError = document.getElementById("formError");
+  const orderNumber = document.getElementById("orderNumber");
+  const successClose = document.getElementById("successClose");
+
+  const cart = []; // { title, price, emoji }
   let toastTimer;
-  document.querySelectorAll(".add-to-cart").forEach((btn) =>
-    btn.addEventListener("click", () => {
-      count += 1;
-      cartCount.textContent = String(count);
-      cartCount.classList.remove("is-bump");
-      void cartCount.offsetWidth;
-      cartCount.classList.add("is-bump");
-      toast.classList.add("is-visible");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 1800);
-    })
-  );
-  document.getElementById("cartBtn").addEventListener("click", () => {
-    toast.textContent = count > 0 ? `🛒 في السلة ${count} كورس` : "🛒 السلة فاضية لسه";
+
+  const formatPrice = (n) => n.toLocaleString("ar-EG") + " ج.م";
+  const cartTotal = () => cart.reduce((sum, item) => sum + item.price, 0);
+
+  const showToast = (msg) => {
+    toast.textContent = msg;
     toast.classList.add("is-visible");
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => {
-      toast.classList.remove("is-visible");
-      toast.textContent = "✅ اتضاف الكورس للسلة";
-    }, 1800);
+    toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 1800);
+  };
+
+  const bumpCount = () => {
+    cartCount.textContent = String(cart.length);
+    cartCount.classList.remove("is-bump");
+    void cartCount.offsetWidth;
+    cartCount.classList.add("is-bump");
+  };
+
+  const renderCart = () => {
+    const isEmpty = cart.length === 0;
+    checkoutEmpty.hidden = !isEmpty;
+    checkoutContent.hidden = isEmpty;
+    checkoutSuccess.hidden = true;
+    if (isEmpty) return;
+    checkoutItems.innerHTML = cart
+      .map(
+        (item, i) => `
+      <div class="checkout-item">
+        <span class="checkout-item__thumb">${item.emoji}</span>
+        <div class="checkout-item__info">
+          <strong>${item.title}</strong>
+          <small>${formatPrice(item.price)}</small>
+        </div>
+        <button class="checkout-item__remove" data-index="${i}" aria-label="حذف من السلة">🗑️</button>
+      </div>`
+      )
+      .join("");
+    checkoutTotal.textContent = formatPrice(cartTotal());
+  };
+
+  const openModal = () => {
+    renderCart();
+    modal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  };
+  const closeModal = () => {
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
+  };
+
+  document.querySelectorAll(".add-to-cart").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".course-card");
+      const title = card.querySelector("h3").textContent.trim();
+      const price = parseInt(card.querySelector(".price__now").textContent.replace(/[^0-9]/g, ""), 10);
+      const emoji = card.querySelector(".course-card__emoji").textContent.trim();
+      cart.push({ title, price, emoji });
+      bumpCount();
+      showToast("✅ اتضاف الكورس للسلة");
+    })
+  );
+
+  document.getElementById("cartBtn").addEventListener("click", openModal);
+  modalClose.addEventListener("click", closeModal);
+  modalOverlay.addEventListener("click", closeModal);
+  successClose.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+  });
+
+  checkoutItems.addEventListener("click", (e) => {
+    const btn = e.target.closest(".checkout-item__remove");
+    if (!btn) return;
+    cart.splice(parseInt(btn.dataset.index, 10), 1);
+    bumpCount();
+    renderCart();
+  });
+
+  checkoutForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("buyerName");
+    const phone = document.getElementById("buyerPhone");
+    const email = document.getElementById("buyerEmail");
+    const nameOk = name.value.trim().length >= 3;
+    const phoneOk = /^01[0-9]{9}$/.test(phone.value.trim());
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    name.classList.toggle("is-invalid", !nameOk);
+    phone.classList.toggle("is-invalid", !phoneOk);
+    email.classList.toggle("is-invalid", !emailOk);
+    const valid = nameOk && phoneOk && emailOk;
+    formError.classList.toggle("is-visible", !valid);
+    if (!valid) return;
+    orderNumber.textContent = "رقم الطلب: #ITQ-" + String(Math.floor(100000 + Math.random() * 900000));
+    checkoutContent.hidden = true;
+    checkoutSuccess.hidden = false;
+    cart.length = 0;
+    bumpCount();
+    checkoutForm.reset();
   });
 
   // --- Scroll reveal ---
