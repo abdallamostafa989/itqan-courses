@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>إتقان | منصة الكورسات أونلاين</title>
+  <meta name="description" content="منصة إتقان — تعلم البرمجة والتصميم والتسويق وإدارة الأعمال بكورسات عربية عالية الجودة، بشهادات معتمدة ومتابعة شخصية." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎓</text></svg>" />
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#top" class="logo">
+        <span class="logo__mark">🎓</span>
+        <span class="logo__text">إتقان</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#courses" class="nav__link">الكورسات</a>
+        <a href="#features" class="nav__link">ليه إتقان؟</a>
+        <a href="#pricing" class="nav__link">الباقات</a>
+        <a href="#testimonials" class="nav__link">آراء الطلاب</a>
+        <a href="#faq" class="nav__link">الأسئلة الشائعة</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="cart-btn" id="cartBtn" aria-label="سلة المشتريات">
+          🛒
+          <span class="cart-btn__count" id="cartCount">0</span>
+        </button>
+        <a href="#pricing" class="btn btn--primary btn--sm header__cta">ابدأ التعلم</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__content reveal">
+          <span class="hero__badge">🔥 أكثر من 50,000 طالب بيتعلموا معانا</span>
+          <h1 class="hero__title">
+            اتعلم مهارة جديدة،<br />
+            <span class="gradient-text">وغيّر مستقبلك</span>
+          </h1>
+          <p class="hero__subtitle">
+            كورسات عربية احترافية في البرمجة والتصميم والتسويق وإدارة الأعمال —
+            بشروحات عملية، ومشاريع حقيقية، وشهادات معتمدة تفتح لك أبواب الشغل.
+          </p>
+          <div class="hero__actions">
+            <a href="#courses" class="btn btn--primary btn--lg">تصفح الكورسات</a>
+            <a href="#features" class="btn btn--ghost btn--lg">اعرف أكتر ▾</a>
+          </div>
+          <div class="hero__stats">
+            <div class="stat">
+              <span class="stat__num" data-count="120">0</span>
+              <span class="stat__label">كورس احترافي</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" data-count="50" data-suffix="K+">0</span>
+              <span class="stat__label">طالب مسجل</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" data-count="4.9" data-decimal="1">0</span>
+              <span class="stat__label">تقييم الطلاب</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal">
+          <div class="hero-card hero-card--main">
+            <div class="hero-card__thumb">💻</div>
+            <h3>أساسيات تطوير الويب</h3>
+            <div class="hero-card__progress">
+              <div class="progress-bar"><span style="width: 72%"></span></div>
+              <small>72% مكتمل</small>
+            </div>
+          </div>
+          <div class="hero-card hero-card--float1">
+            <span>🏆</span> شهادة معتمدة
+          </div>
+          <div class="hero-card hero-card--float2">
+            <span>⭐ 4.9</span> تقييم الكورس
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Categories strip ===== -->
+    <section class="strip">
+      <div class="container strip__inner">
+        <span>💻 برمجة</span>
+        <span>🎨 تصميم</span>
+        <span>📈 تسويق</span>
+        <span>💼 بيزنس</span>
+        <span>🤖 ذكاء اصطناعي</span>
+        <span>📊 تحليل بيانات</span>
+        <span>🗣️ لغات</span>
+      </div>
+    </section>
+
+    <!-- ===== Courses ===== -->
+    <section class="section" id="courses">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>الكورسات الأكثر طلبًا</h2>
+          <p>اختار الكورس اللي يناسبك وابدأ على طول — كل الكورسات عليها ضمان استرجاع 30 يوم.</p>
+        </div>
+
+        <div class="filters reveal" id="filters">
+          <button class="filter is-active" data-filter="all">الكل</button>
+          <button class="filter" data-filter="dev">برمجة</button>
+          <button class="filter" data-filter="design">تصميم</button>
+          <button class="filter" data-filter="marketing">تسويق</button>
+          <button class="filter" data-filter="business">بيزنس</button>
+        </div>
+
+        <div class="courses-grid" id="coursesGrid">
+          <!-- Course card -->
+          <article class="course-card reveal" data-category="dev">
+            <div class="course-card__thumb" style="--g1:#6366f1;--g2:#8b5cf6">
+              <span class="course-card__emoji">🌐</span>
+              <span class="course-card__badge">الأكثر مبيعًا</span>
+            </div>
+            <div class="course-card__body">
+              <span class="course-card__cat">برمجة</span>
+              <h3>تطوير الويب الشامل: HTML و CSS و JavaScript</h3>
+              <p class="course-card__desc">من الصفر لحد ما تبني مواقع كاملة بنفسك، بمشاريع عملية خطوة بخطوة.</p>
+              <div class="course-card__meta">
+                <span>⏱️ 42 ساعة</span>
+                <span>📹 320 درس</span>
+                <span>⭐ 4.9 (12,400)</span>
+              </div>
+              <div class="course-card__foot">
+                <div class="price">
+                  <span class="price__now">349 ج.م</span>
+                  <span class="price__old">899 ج.م</span>
+                </div>
+                <button class="btn btn--primary btn--sm add-to-cart">أضف للسلة</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card reveal" data-category="dev">
+            <div class="course-card__thumb" style="--g1:#0ea5e9;--g2:#22d3ee">
+              <span class="course-card__emoji">⚛️</span>
+            </div>
+            <div class="course-card__body">
+              <span class="course-card__cat">برمجة</span>
+              <h3>React.js من الصفر للاحتراف</h3>
+              <p class="course-card__desc">ابني تطبيقات حديثة بـ React و Hooks وإدارة الحالة زي المحترفين.</p>
+              <div class="course-card__meta">
+                <span>⏱️ 35 ساعة</span>
+                <span>📹 240 درس</span>
+                <span>⭐ 4.8 (8,200)</span>
+              </div>
+              <div class="course-card__foot">
+                <div class="price">
+                  <span class="price__now">399 ج.م</span>
+                  <span class="price__old">950 ج.م</span>
+                </div>
+                <button class="btn btn--primary btn--sm add-to-cart">أضف للسلة</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card reveal" data-category="design">
+            <div class="course-card__thumb" style="--g1:#f43f5e;--g2:#fb923c">
+              <span class="course-card__emoji">🎨</span>
+              <span class="course-card__badge badge--new">جديد</span>
+            </div>
+            <div class="course-card__body">
+              <span class="course-card__cat">تصميم</span>
+              <h3>تصميم واجهات UI/UX ببرنامج Figma</h3>
+              <p class="course-card__desc">اتعلم تصمم واجهات جذابة وسهلة الاستخدام، وابني بورتفوليو يفتح لك شغل.</p>
+              <div class="course-card__meta">
+                <span>⏱️ 28 ساعة</span>
+                <span>📹 180 درس</span>
+                <span>⭐ 4.9 (6,750)</span>
+              </div>
+              <div class="course-card__foot">
+                <div class="price">
+                  <span class="price__now">299 ج.م</span>
+                  <span class="price__old">749 ج.م</span>
+                </div>
+                <button class="btn btn--primary btn--sm add-to-cart">أضف للسلة</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card reveal" data-category="marketing">
+            <div class="course-card__thumb" style="--g1:#10b981;--g2:#84cc16">
+              <span class="course-card__emoji">📈</span>
+            </div>
+            <div class="course-card__body">
+              <span class="course-card__cat">تسويق</span>
+              <h3>التسويق الرقمي والإعلانات الممولة</h3>
+              <p class="course-card__desc">إعلانات فيسبوك وجوجل وتيك توك من التخطيط للحملة لحد قياس النتائج.</p>
+              <div class="course-card__meta">
+                <span>⏱️ 24 ساعة</span>
+                <span>📹 150 درس</span>
+                <span>⭐ 4.7 (5,300)</span>
+              </div>
+              <div class="course-card__foot">
+                <div class="price">
+                  <span class="price__now">279 ج.م</span>
+                  <span class="price__old">699 ج.م</span>
+                </div>
+                <button class="btn btn--primary btn--sm add-to-cart">أضف للسلة</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card reveal" data-category="dev">
+            <div class="course-card__thumb" style="--g1:#f59e0b;--g2:#ef4444">
+              <span class="course-card__emoji">🐍</span>
+            </div>
+            <div class="course-card__body">
+              <span class="course-card__cat">برمجة</span>
+              <h3>بايثون للمبتدئين وتحليل البيانات</h3>
+              <p class="course-card__desc">اتعلم لغة بايثون من الأساسيات، واستخدمها في تحليل البيانات الحقيقية.</p>
+              <div class="course-card__meta">
+                <span>⏱️ 38 ساعة</span>
+                <span>📹 260 درس</span>
+                <span>⭐ 4.8 (9,100)</span>
+              </div>
+              <div class="course-card__foot">
+                <div class="price">
+                  <span class="price__now">329 ج.م</span>
+                  <span class="price__old">799 ج.م</span>
+                </div>
+                <button class="btn btn--primary btn--sm add-to-cart">أضف للسلة</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card reveal" data-category="business">
+            <div class="course-card__thumb" style="--g1:#8b5cf6;--g2:#ec4899">
+              <span class="course-card__emoji">💼</span>
+            </div>
+            <div class="course-card__body">
+              <span class="course-card__cat">بيزنس</span>
+              <h3>إدارة المشاريع والعمل الحر</h3>
+              <p class="course-card__desc">ازاي تدير وقتك ومشاريعك، وتكسب أول عملاء ليك على منصات الفريلانس.</p>
+              <div class="course-card__meta">
+                <span>⏱️ 18 ساعة</span>
+                <span>📹 120 درس</span>
+                <span>⭐ 4.8 (4,600)</span>
+              </div>
+              <div class="course-card__foot">
+                <div class="price">
+                  <span class="price__now">249 ج.م</span>
+                  <span class="price__old">599 ج.م</span>
+                </div>
+                <button class="btn btn--primary btn--sm add-to-cart">أضف للسلة</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section class="section section--alt" id="features">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>ليه تختار إتقان؟</h2>
+          <p>مش بس كورسات — دي تجربة تعلم متكاملة بتوصلك لهدفك.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature reveal">
+            <div class="feature__icon">🎯</div>
+            <h3>تعلم عملي 100%</h3>
+            <p>كل كورس فيه مشاريع حقيقية تطبق فيها اللي اتعلمته وتضيفها للبورتفوليو بتاعك.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon">🏆</div>
+            <h3>شهادات معتمدة</h3>
+            <p>خد شهادة إتمام لكل كورس تضيفها لحسابك على LinkedIn والسي في بتاعك.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon">👨‍🏫</div>
+            <h3>مدربين خبراء</h3>
+            <p>محتوى من ناس شغالة في السوق فعلًا، بخبرة سنين في كبرى الشركات.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon">♾️</div>
+            <h3>وصول مدى الحياة</h3>
+            <p>ادفع مرة واحدة وادخل على الكورس وتحديثاته للأبد، من أي جهاز.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon">💬</div>
+            <h3>مجتمع داعم</h3>
+            <p>اسأل وناقش مع المدربين وزمايلك في مجتمع خاص لكل كورس.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon">↩️</div>
+            <h3>ضمان 30 يوم</h3>
+            <p>لو الكورس معجبكش، استرجع فلوسك كاملة خلال 30 يوم من غير أسئلة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Pricing ===== -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>باقات تناسب كل الناس</h2>
+          <p>ابدأ مجانًا، أو خد وصول كامل لكل الكورسات باشتراك واحد.</p>
+        </div>
+        <div class="pricing-grid">
+          <div class="plan reveal">
+            <h3>المجانية</h3>
+            <div class="plan__price">0 ج.م <small>/ للأبد</small></div>
+            <ul>
+              <li>✅ 5 كورسات مجانية</li>
+              <li>✅ مجتمع الطلاب</li>
+              <li>❌ شهادات معتمدة</li>
+              <li>❌ مشاريع عملية</li>
+            </ul>
+            <a href="#courses" class="btn btn--ghost btn--block">ابدأ مجانًا</a>
+          </div>
+
+          <div class="plan plan--featured reveal">
+            <span class="plan__tag">الأكثر اختيارًا ⭐</span>
+            <h3>الاحترافية</h3>
+            <div class="plan__price">199 ج.م <small>/ شهريًا</small></div>
+            <ul>
+              <li>✅ كل الكورسات (+120)</li>
+              <li>✅ شهادات معتمدة</li>
+              <li>✅ مشاريع ومراجعات شخصية</li>
+              <li>✅ جلسات مباشرة أسبوعية</li>
+            </ul>
+            <a href="#courses" class="btn btn--primary btn--block">اشترك دلوقتي</a>
+          </div>
+
+          <div class="plan reveal">
+            <h3>الشركات</h3>
+            <div class="plan__price">حسب الفريق <small>/ تواصل معانا</small></div>
+            <ul>
+              <li>✅ كل مميزات الاحترافية</li>
+              <li>✅ لوحة متابعة للمديرين</li>
+              <li>✅ تقارير تقدم الفريق</li>
+              <li>✅ دعم مخصص</li>
+            </ul>
+            <a href="#footer" class="btn btn--ghost btn--block">تواصل معانا</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Testimonials ===== -->
+    <section class="section section--alt" id="testimonials">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>طلابنا بيقولوا إيه؟</h2>
+          <p>قصص حقيقية لناس غيّرت سكتها مع إتقان.</p>
+        </div>
+        <div class="testimonials-grid">
+          <figure class="testimonial reveal">
+            <div class="testimonial__stars">★★★★★</div>
+            <blockquote>"كورس تطوير الويب غيّر حياتي. بعد 6 شهور من المذاكرة اتعينت أول وظيفة فرونت إند ديفيلوبر."</blockquote>
+            <figcaption>
+              <span class="testimonial__avatar" style="--g1:#6366f1;--g2:#8b5cf6">أ</span>
+              <div>
+                <strong>أحمد سامي</strong>
+                <small>Front-End Developer</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="testimonial reveal">
+            <div class="testimonial__stars">★★★★★</div>
+            <blockquote>"شرح بسيط وعملي جدًا. كورس الـ UI/UX خلاني أبني بورتفوليو وأشتغل فريلانسر وأنا لسه في الكلية."</blockquote>
+            <figcaption>
+              <span class="testimonial__avatar" style="--g1:#f43f5e;--g2:#fb923c">م</span>
+              <div>
+                <strong>مريم خالد</strong>
+                <small>UI/UX Designer</small>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="testimonial reveal">
+            <div class="testimonial__stars">★★★★★</div>
+            <blockquote>"باقة الاحترافية أحسن استثمار عملته. المتابعة الشخصية والجلسات المباشرة فرقت معايا جدًا."</blockquote>
+            <figcaption>
+              <span class="testimonial__avatar" style="--g1:#10b981;--g2:#84cc16">ي</span>
+              <div>
+                <strong>يوسف عادل</strong>
+                <small>Digital Marketer</small>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section" id="faq">
+      <div class="container container--narrow">
+        <div class="section__head reveal">
+          <h2>الأسئلة الشائعة</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item reveal">
+            <summary>هل الكورسات بالعربي؟ <span class="faq-item__icon">＋</span></summary>
+            <p>أيوه، كل الكورسات باللغة العربية وبشرح مبسط، والمصطلحات التقنية بنشرحها بالإنجليزي والعربي مع بعض.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>هل الشهادات معتمدة؟ <span class="faq-item__icon">＋</span></summary>
+            <p>بتاخد شهادة إتمام لكل كورس تقدر تضيفها لـ LinkedIn والسي في، والباقة الاحترافية فيها شهادات بمشاريع مُراجعة.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>لحد امتى أقدر أدخل على الكورس؟ <span class="faq-item__icon">＋</span></summary>
+            <p>الكورس اللي بتشتريه بيفضل معاك مدى الحياة، بكل تحديثاته، وتقدر تتفرج عليه من الموبايل أو الكمبيوتر في أي وقت.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>إيه طرق الدفع المتاحة؟ <span class="faq-item__icon">＋</span></summary>
+            <p>بنقبل فودافون كاش وانستاباي والكروت البنكية (فيزا وماستركارد) وPayPal.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>فيه ضمان استرجاع؟ <span class="faq-item__icon">＋</span></summary>
+            <p>أيوه، لو الكورس معجبكش خلال 30 يوم بنرجعلك فلوسك كاملة من غير أي أسئلة.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta">
+      <div class="container cta__inner reveal">
+        <h2>جاهز تبدأ رحلتك؟ 🚀</h2>
+        <p>انضم لأكثر من 50,000 طالب بيبنوا مستقبلهم مع إتقان.</p>
+        <a href="#pricing" class="btn btn--light btn--lg">ابدأ التعلم مجانًا</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer" id="footer">
+    <div class="container footer__grid">
+      <div class="footer__col">
+        <a href="#top" class="logo logo--footer">
+          <span class="logo__mark">🎓</span>
+          <span class="logo__text">إتقان</span>
+        </a>
+        <p>منصة عربية لتعلم المهارات الرقمية بكورسات عملية وشهادات معتمدة.</p>
+      </div>
+      <div class="footer__col">
+        <h4>المنصة</h4>
+        <a href="#courses">الكورسات</a>
+        <a href="#pricing">الباقات</a>
+        <a href="#testimonials">آراء الطلاب</a>
+      </div>
+      <div class="footer__col">
+        <h4>الدعم</h4>
+        <a href="#faq">الأسئلة الشائعة</a>
+        <a href="#faq">سياسة الاسترجاع</a>
+        <a href="#footer">تواصل معانا</a>
+      </div>
+      <div class="footer__col">
+        <h4>تابعنا</h4>
+        <div class="socials">
+          <a href="#" aria-label="فيسبوك">📘</a>
+          <a href="#" aria-label="تويتر">🐦</a>
+          <a href="#" aria-label="انستجرام">📸</a>
+          <a href="#" aria-label="يوتيوب">▶️</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© 2026 إتقان. كل الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">✅ اتضاف الكورس للسلة</div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
